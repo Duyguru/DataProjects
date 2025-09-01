@@ -1,0 +1,9 @@
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# MacOS sistem dosyaları
+.DS_Store
+
+# Python cache dosyaları
+__pycache__/
+*.pyc
