@@ -55,7 +55,7 @@ print(df.isnull().sum())
 
 
 #----------------------------------------------------------------
-# Adım 4: Özelliklerin Tanımlanması
+# Özelliklerin Tanımlanması
 # Sayısal ve kategorik özellikleri burada tanımlayarak sonraki adımlarda kullanıma hazır hale getiriyoruz.
 #----------------------------------------------------------------
 categorical_features = ["sex", "dataset", "cp", "restecg", "exang", "slope", "thal"]
@@ -63,7 +63,7 @@ numerical_features = ["age", "trestbps", "chol", "fbs", "thalch", "oldpeak"]
 
 
 #----------------------------------------------------------------
-# Adım 5: Veri Görselleştirme (data visualization)
+# Veri Görselleştirme (data visualization)
 #----------------------------------------------------------------
 print("\nVeri görselleştirme adımı başlatılıyor...")
 
@@ -88,7 +88,7 @@ plt.show()
 
 
 #----------------------------------------------------------------
-# Adım 6: Özellik Mühendisliği (Feature Engineering)
+# Özellik Mühendisliği (Feature Engineering)
 # Veriyi ayırma, ölçeklendirme ve kategorik kodlama
 #----------------------------------------------------------------
 X = df.drop(["num"], axis=1)
@@ -112,7 +112,7 @@ X_test_processed = np.hstack((X_test_num_scaled, X_test_cat_encoded))
 
 
 #----------------------------------------------------------------
-# Adım 7: Model Karşılaştırması
+# Model Karşılaştırması
 #----------------------------------------------------------------
 models = {
     "Random Forest": RandomForestClassifier(random_state=42),
@@ -132,7 +132,7 @@ print(results_df.sort_values(by='Accuracy', ascending=False))
 
 
 #----------------------------------------------------------------
-# Adım 8: Hiperparametre Optimizasyonu (hyperparameter tuning)
+# Hiperparametre Optimizasyonu (hyperparameter tuning)
 # En iyi görünen model olan Random Forest için optimizasyon
 #----------------------------------------------------------------
 print("\nRandom Forest modeli için hiperparametre optimizasyonu (GridSearchCV) başlatılıyor...")
@@ -150,7 +150,7 @@ best_rf_model = grid_search_rf.best_estimator_
 
 
 #----------------------------------------------------------------
-# Adım 9: Final Model Değerlendirmesi
+# Final Model Değerlendirmesi
 #----------------------------------------------------------------
 y_pred_final = best_rf_model.predict(X_test_processed)
 
@@ -167,7 +167,7 @@ plt.show()
 
 
 #----------------------------------------------------------------
-# Adım 10: Özellik Önem Analizi (feature importance)
+# Özellik Önem Analizi (feature importance)
 #----------------------------------------------------------------
 print("\nModel için özellik önem düzeyleri analiz ediliyor...")
 
@@ -190,7 +190,7 @@ plt.show()
 
 
 #----------------------------------------------------------------
-# Adım 11: ROC-AUC Skoru Hesaplanması
+# ROC-AUC Skoru Hesaplanması
 #----------------------------------------------------------------
 y_pred_proba = best_rf_model.predict_proba(X_test_processed)
 
@@ -200,7 +200,7 @@ print(f"\nModelin ROC AUC (One-vs-Rest) Skoru: {roc_auc:.4f}")
 
 
 #----------------------------------------------------------------
-# Adım 12: Model Kaydetme ve Yükleme
+# Model Kaydetme ve Yükleme
 #----------------------------------------------------------------
 model_filename = 'kalp_hastaligi_final_model.joblib'
 scaler_filename = 'scaler.joblib'
@@ -220,7 +220,7 @@ score = loaded_model.score(X_test_processed, y_test)
 print(f"Yüklenen modelin doğruluk skoru: {score:.4f}")
 
 #----------------------------------------------------------------
-# Adım 13: Sonuçların Yorumlanması
+# Sonuçların Yorumlanması
 #----------------------------------------------------------------
 print("\n--- FİNAL SONUÇ VE YORUMLAR ---")
 print("1. Veri seti yüklendi ve 'id' gibi gereksiz sütunlar çıkarıldı.")
